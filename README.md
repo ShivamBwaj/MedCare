@@ -26,7 +26,8 @@ MedCare provides an integrated platform that solves these challenges through:
 ### 🤖 **AI-Powered Healthcare Intelligence**
 - **Symptom-based Disease Prediction** using Random Forest ML models
 - **Computer Vision for Skin/Nail Disease Detection** with PyTorch neural networks
-- **Parkinson's Disease Detection** using HOG descriptors and Random Forest classifiers
+- **Parkinson's Disease Detection** using HOG descriptors and Random Forest classifiers from drawing analysis
+- **Real-time Doctor-Patient Chat** with AI assistant fallback using Groq LLM
 - **Cold-Chain Risk Assessment** using logistic regression for spoilage prediction
 - **Real-time Anomaly Detection** for critical temperature monitoring
 
@@ -203,12 +204,12 @@ pip install fastapi uvicorn sqlalchemy bcrypt python-jose pandas scikit-learn to
 # Initialize database and create demo users
 python create_admin.py
 
-# Train AI models 
+# Train AI models (REQUIRED - Models not included in repository)
 cd ai
 python train_symptoms.py     # Symptom prediction model
 python train_nail_cnn.py     # Custom CNN for nail disease detection
-python train_nail_transfer.py # Transfer learning for nail disease
-python train_parkinsons.py   # Parkinson's detection from drawings
+python train_nail_transfer.py # Transfer learning for nail disease (MobileNetV2)
+python train_parkinsons.py   # Parkinson's detection from drawings (HOG + Random Forest)
 cd ..
 ```
 
@@ -270,6 +271,106 @@ npx expo start
 - **📱 Mobile App**: Scan QR code from Expo
 - **🔧 Backend API**: http://localhost:8000
 - **📚 API Documentation**: http://localhost:8000/docs
+
+---
+
+## 🧠 AI Model Training Guide
+
+**⚠️ IMPORTANT**: Machine learning models are **NOT included** in this repository due to their large file sizes. You must train the models locally before using the AI features.
+
+### 📋 Prerequisites for Model Training
+
+```bash
+# Ensure you have the required dependencies
+pip install torch torchvision scikit-learn scikit-image opencv-python pandas numpy pillow joblib
+```
+
+### 🎯 Training Instructions
+
+#### 1. **Nail Disease Detection Model**
+```bash
+cd backend/ai
+python train_nail_transfer.py
+```
+**What it does:**
+- Uses **MobileNetV2 transfer learning** for nail disease classification
+- Trains on nail images to detect conditions like fungal infections, psoriasis, etc.
+- Saves model as `ai/nail_transfer_model.pt`
+- **Required for**: Patient Portal → Nail Analysis feature
+
+#### 2. **Parkinson's Disease Detection Model**
+```bash
+cd backend/ai  
+python train_parkinsons.py
+```
+**What it does:**
+- Uses **HOG (Histogram of Oriented Gradients)** feature extraction
+- Trains **Random Forest classifiers** on spiral and wave drawings
+- Detects tremor patterns indicative of Parkinson's disease
+- Saves models as `parkinsons_spiral_model.pkl` and `parkinsons_wave_model.pkl`
+- **Required for**: Patient Portal → Parkinson's Test feature
+
+#### 3. **Symptom-Based Disease Prediction**
+```bash
+cd backend/ai
+python train_symptoms.py
+```
+**What it does:**
+- Trains **Random Forest** and **KNN** models on symptom data
+- Predicts disease risk based on patient-described symptoms
+- Saves models as `disease_knn_model.pkl` and `disease_tfidf_vectorizer.pkl`
+- **Required for**: Patient Portal → Disease Risk Assessment
+
+### 🔄 Model File Structure
+After training, your `backend/ai/` directory should contain:
+```
+ai/
+├── ai/
+│   ├── nail_transfer_model.pt          # Nail disease detection (PyTorch)
+│   └── skin_model.pt                   # Skin analysis model
+├── parkinsons_spiral_model.pkl         # Parkinson's spiral analysis
+├── parkinsons_wave_model.pkl           # Parkinson's wave analysis  
+├── parkinsons_spiral_encoder.pkl       # Label encoder for spiral
+├── parkinsons_wave_encoder.pkl         # Label encoder for wave
+├── disease_knn_model.pkl               # Disease prediction model
+└── disease_tfidf_vectorizer.pkl        # Text vectorizer for symptoms
+```
+
+---
+
+## 💬 Live Doctor-Patient Chat System
+
+MedCare includes a **real-time chat system** with AI fallback capabilities:
+
+### 🌟 Key Features
+- **WebSocket-based real-time messaging** between doctors and patients
+- **AI Assistant fallback** using Groq LLM (Llama-3.1-8b-instant) when doctors are offline
+- **Contextual memory** - AI remembers conversation history for better responses
+- **Session persistence** - Chat history saved and retrievable
+- **Real-time notifications** for both doctors and patients
+- **Online status indicators** showing availability
+
+### 🔧 Setup Requirements
+1. **Groq API Key**: Add to `.env` file as `GROQ_API_KEY=your_key_here`
+2. **WebSocket endpoints**: Automatically configured at `/ws/chat/{user_id}`
+3. **Database tables**: `chat_sessions`, `chat_messages`, `chat_notifications`
+
+### 📱 How to Use
+- **Patients**: Navigate to "Chat with Doctor" tab, select a doctor, start chatting
+- **Doctors**: Use "Patient Chat" tab to see patient messages and respond
+- **AI Fallback**: If no doctor is online, AI assistant responds immediately with medical guidance
+
+---
+
+## 🎯 Key AI Features Summary
+
+| Feature | Technology | Model Type | Use Case |
+|---------|------------|------------|----------|
+| **Nail Disease Detection** | PyTorch + MobileNetV2 | Transfer Learning | Analyze nail photos for health conditions |
+| **Parkinson's Detection** | HOG + Random Forest | Computer Vision | Detect tremors from drawing patterns |
+| **Disease Prediction** | TF-IDF + KNN | NLP + ML | Predict diseases from symptom descriptions |
+| **Live Chat AI** | Groq LLM | Large Language Model | Medical assistance when doctors unavailable |
+| **Cold Chain Monitoring** | Logistic Regression | Predictive Analytics | Pharmaceutical storage risk assessment |
 - **🔍 Interactive API**: http://localhost:8000/redoc
 
 ---
