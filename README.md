@@ -17,7 +17,7 @@ MedCare provides an AI-powered platform that solves these challenges through:
 
 ### 🤖 **AI-Powered Disease Detection**
 - **Symptom-based Disease Prediction** using Random Forest ML models
-- **Computer Vision for Skin/Nail Disease Detection** with PyTorch neural networks
+- **Computer Vision for Nail Disease Detection** with PyTorch neural networks
 - **Parkinson's Disease Detection** using HOG descriptors and Random Forest classifiers from drawing analysis
 - **Real-time Doctor-Patient Chat** with AI assistant fallback using Groq LLM
 
@@ -53,7 +53,7 @@ MedCare provides an AI-powered platform that solves these challenges through:
 - **💬 Secure Patient Communication** via real-time WebSocket messaging
 - **🤖 AI Diagnostic Tools**:
   - **Symptom-based Disease Prediction** using Random Forest ML models
-  - **Skin/Nail Disease Detection** via computer vision and PyTorch neural networks
+  - **Nail Disease Detection** via computer vision and PyTorch neural networks
   - **Parkinson's Disease Detection** via drawing analysis with HOG features
 - **📋 Patient Management** with detailed medical histories and treatment plans
 - **📈 Clinical Analytics** with department distribution and adherence trends
@@ -76,7 +76,7 @@ MedCare provides an AI-powered platform that solves these challenges through:
   - Scikit-learn implementation with joblib model persistence
 
 - **🔬 Computer Vision for Medical Imaging**
-  - PyTorch-based neural networks for skin/nail disease detection
+  - PyTorch-based neural networks for nail disease detection
   - MobileNet V2 architecture optimized for medical imaging
   - Classifications: Healthy, Fungal Infections, Psoriasis
   - Image preprocessing with data augmentation
@@ -86,17 +86,6 @@ MedCare provides an AI-powered platform that solves these challenges through:
   - Real-time temperature/humidity monitoring with ML predictions
   - Anomaly detection for critical storage violations
   - 75% model accuracy with continuous learning
-
-### ⛓️ **Enterprise Blockchain Infrastructure**
-- **🔐 Cryptographic Security**
-  - SHA-256 hashing for file integrity verification
-  - Immutable medical record storage
-  - Tamper-proof audit trails for regulatory compliance
-  
-- **📋 Document Verification Workflow**
-  - Blockchain-verified file uploads and approvals
-  - Multi-stage approval process for clinical documents
-  - Hash-based file authentication and version control
 
 ### 💬 **Real-Time Communication System**
 - **⚡ WebSocket Integration**
@@ -207,21 +196,7 @@ npm install
 npm install recharts lucide-react framer-motion
 ```
 
-#### 4. **Mobile App Setup** (React Native + Expo)
-```bash
-cd mobile
-
-# Install dependencies
-npm install
-
-# Install Expo CLI globally
-npm install -g @expo/cli
-
-# Start Expo development server
-npx expo start
-```
-
-#### 5. **Start the Platform**
+#### 4. **Start the Platform**
 
 **Option 1: Quick Start Script**
 ```bash
@@ -251,7 +226,6 @@ npx expo start
 
 #### 6. **Access Applications**
 - **🌐 Web Frontend**: http://localhost:3000
-- **📱 Mobile App**: Scan QR code from Expo
 - **🔧 Backend API**: http://localhost:8000
 - **📚 API Documentation**: http://localhost:8000/docs
 
@@ -391,18 +365,6 @@ MedCare includes a **real-time chat system** with AI fallback capabilities:
 - **🖼️ OpenCV** - Computer vision for Parkinson's detection
 - **📈 Scikit-Image** - HOG feature extraction for medical imaging
 
-#### **Mobile Technologies**
-- **📱 React Native** - Cross-platform mobile development
-- **🚀 Expo** - Development platform and toolchain
-- **📐 React Native Paper** - Material Design components
-- **🧭 React Navigation** - Mobile navigation framework
-
-#### **Blockchain & Security**
-- **🔐 SHA-256 Hashing** - Cryptographic file integrity
-- **⛓️ Custom Blockchain** - Immutable audit trails
-- **🔒 CORS Security** - Cross-origin request protection
-- **🛡️ Input Validation** - Pydantic data validation
-
 ### **📡 API Architecture**
 
 #### **Authentication Endpoints**
@@ -412,7 +374,7 @@ MedCare includes a **real-time chat system** with AI fallback capabilities:
 
 #### **Healthcare AI Endpoints**
 - `POST /ai/symptoms/predict` - Symptom-based disease prediction
-- `POST /ai/skin/predict` - Skin/nail disease image analysis
+- `POST /ai/predict` - nail disease image analysis
 - `POST /ai/parkinsons/predict` - Parkinson's disease detection from drawings
 - `GET /ai/models/status` - AI model health and status
 
@@ -437,12 +399,6 @@ MedCare includes a **real-time chat system** with AI fallback capabilities:
 - `GET /coldchain/data/{batch_id}` - Cold-chain sensor data
 - `POST /coldchain/predict` - AI spoilage risk prediction
 - `GET /coldchain/alerts` - Active temperature/humidity alerts
-
-#### **Blockchain Endpoints**
-- `POST /files/upload` - Secure file upload with verification hashing
-- `GET /files/history` - File upload history and verification
-- `GET /verification/activity` - Complete verification audit trail
-- `POST /clinical-trials/approve` - Blockchain-verified trial approvals
 
 ### **🎨 Modern UI/UX Design**
 
@@ -495,7 +451,7 @@ MedCare includes a **real-time chat system** with AI fallback capabilities:
 - **Training Script**: `backend/ai/train_parkinsons.py`
 - **API Endpoint**: `POST /ai/parkinsons/predict` with drawing_type parameter
 
-### **🔬 Skin/Nail Disease Detection**
+### **🔬 Nail Disease Detection**
 - **Algorithm**: Custom CNN and Transfer Learning (MobileNet V2)
 - **Architecture**: Custom CNN with batch normalization and adaptive pooling
 - **Training Data**: Dermatological image datasets (healthy, fungal, psoriasis)
