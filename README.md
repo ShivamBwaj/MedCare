@@ -1,47 +1,30 @@
-# 🏥 MedCare - Advanced Healthcare Management Platform
+# 🏥 MedCare - AI-Powered Healthcare Platform
 
-**MedCare** is a revolutionary healthcare management platform that combines verification technology, artificial intelligence, and real-time monitoring to create a comprehensive solution for modern healthcare institutions. Built with cutting-edge technologies, MedCare addresses critical challenges in healthcare data security, patient care coordination, and supply chain management.
+**MedCare** is an AI-powered healthcare platform that provides intelligent disease detection, real-time doctor-patient communication, and comprehensive health monitoring. Built during the **V-Medithon 24-hour hackathon** by **Shivam Bhardwaj** and **Krrish Rajput**, MedCare leverages cutting-edge machine learning and computer vision technologies for early disease detection and improved patient care.
 
 ## 🎯 Problem Statement
 
-Healthcare institutions face multiple critical challenges:
+Healthcare faces critical challenges in early disease detection and patient care:
 
-- **Data Security & Integrity**: Medical records and sensitive data require immutable storage and verification
-- **Supply Chain Transparency**: Pharmaceutical cold-chain monitoring lacks real-time visibility and AI-powered risk assessment
-- **Patient Care Coordination**: Fragmented communication between doctors and patients leads to poor adherence and outcomes
-- **Clinical Trial Management**: Complex approval workflows and document verification processes
-- **Predictive Healthcare**: Limited AI integration for early disease detection and preventive care
-- **Regulatory Compliance**: Need for auditable trails and verification-verified transactions
+- **Limited AI Integration**: Most healthcare systems lack intelligent disease detection capabilities
+- **Patient Care Coordination**: Fragmented communication between doctors and patients leads to poor outcomes
+- **Early Disease Detection**: Diseases like Parkinson's are often detected too late for optimal treatment
+- **Accessibility**: Patients need immediate access to medical guidance when doctors are unavailable
 
 ## 💡 Our Solution
 
-MedCare provides an integrated platform that solves these challenges through:
+MedCare provides an AI-powered platform that solves these challenges through:
 
-### 🔐 **Blockchain-Secured Data Management**
-- Immutable medical record storage with SHA-256 cryptographic hashing
-- Tamper-proof audit trails for all transactions
-- Regulatory compliance through verification verification
-- Secure file upload and approval workflows
-
-### 🤖 **AI-Powered Healthcare Intelligence**
+### 🤖 **AI-Powered Disease Detection**
 - **Symptom-based Disease Prediction** using Random Forest ML models
 - **Computer Vision for Skin/Nail Disease Detection** with PyTorch neural networks
 - **Parkinson's Disease Detection** using HOG descriptors and Random Forest classifiers from drawing analysis
 - **Real-time Doctor-Patient Chat** with AI assistant fallback using Groq LLM
-- **Cold-Chain Risk Assessment** using logistic regression for spoilage prediction
-- **Real-time Anomaly Detection** for critical temperature monitoring
-
-### 🌡️ **Smart Supply Chain Monitoring**
-- **Real-time Cold-Chain Tracking** with IoT sensor integration
-- **AI-powered Risk Analysis** for pharmaceutical storage
-- **Automated Alert Systems** for temperature/humidity violations
-- **Predictive Analytics** for spoilage prevention
 
 ### 👥 **Role-Based Care Coordination**
-- **Multi-Portal Architecture** for different user types
+- **Multi-Portal Architecture** for Doctors and Patients
 - **Real-time Doctor-Patient Communication** via WebSocket
-- **Patient Adherence Monitoring** with analytics dashboards
-- **Clinical Trial Management** with approval workflows
+- **Patient Health Monitoring** with AI-powered analysis dashboards
 
 ## 🌟 Features
 
@@ -371,6 +354,7 @@ MedCare includes a **real-time chat system** with AI fallback capabilities:
 | **Disease Prediction** | TF-IDF + KNN | NLP + ML | Predict diseases from symptom descriptions |
 | **Live Chat AI** | Groq LLM | Large Language Model | Medical assistance when doctors unavailable |
 | **Cold Chain Monitoring** | Logistic Regression | Predictive Analytics | Pharmaceutical storage risk assessment |
+
 - **🔍 Interactive API**: http://localhost:8000/redoc
 
 ---
