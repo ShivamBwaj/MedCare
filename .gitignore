@@ -49,12 +49,7 @@ pids
 *.seed
 *.pid.lock
 
-# Machine Learning Models (large files)
-*.pkl
-*.pt
-*.h5
-*.model
-*.joblib
+
 
 # Specific model files
 backend/ai/ai/nail_cnn_model.pt
